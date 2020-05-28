@@ -1,23 +1,23 @@
 // Main Variables
-let theInput = document.querySelector('.get-repos input');
-let getButton = document.querySelector('.get-repos .get-button');
-let reposData = document.querySelector('.show-data');
+let theInputElm = document.querySelector('.upload-data input');
+let sendButtonElm = document.querySelector('.upload-data .send-button');
+let showDataElm = document.querySelector('.show-data');
 
 // document.addEventListener('DOMContentLoaded', (event) => {
 //   console.log('DOM fully loaded and parsed');
 // });
 
-getButton.addEventListener('click', getRepos);
+sendButtonElm.addEventListener('click', sendRequest);
 
 //Get Repos Function
-function getRepos() {
-  if (theInput.value.trim() === '') {
-    reposData.innerHTML =
+function sendRequest() {
+  if (theInputElm.value.trim() === '') {
+    showDataElm.innerHTML =
       '<div class="alert">Please write GitHub UserName.</div>';
   } else {
     //    https://api.github.com/users/Adham-Elias-Botrous/repos`
 
-    fetch(`https://api.github.com/users/${theInput.value.trim()}/repos`)
+    fetch(`https://api.github.com/users/${theInputElm.value.trim()}/repos`)
       .then((response) => {
         if (!response.ok)
           throw Error(`Request rejected with status ${response.status}`);
@@ -25,7 +25,7 @@ function getRepos() {
       })
       .then((repos) => {
         //empty the container
-        reposData.innerHTML = '';
+        showDataElm.innerHTML = '';
         //loop on the repos
         repos.forEach((repo) => {
           //   create the main Div Element
@@ -64,11 +64,11 @@ function getRepos() {
           mainDiv.appendChild(starsSpan);
 
           //to the DOM: append the mainDiv to the containter
-          reposData.appendChild(mainDiv);
+          showDataElm.appendChild(mainDiv);
         });
       })
       .catch((error) => {
-        reposData.innerHTML = `<div class="alert">${error}</div>`;
+        showDataElm.innerHTML = `<div class="alert">${error}</div>`;
       });
   }
 }
