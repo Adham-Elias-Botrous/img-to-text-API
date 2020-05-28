@@ -11,7 +11,7 @@ myForm.addEventListener('submit', (ev) => {
   }
   showData.innerHTML = '<div class="loader"></div>';
   const endPoint =
-    'https://custom-ocr.klippa.com/api/v1/parseDocument?X-Auth-Key=sLiopG4bfDH6wcIZxBjZk85Z9DIiUK7G';
+    'https://custom-ocr.klippa.com/api/v1/parseDocument?X-Auth-Key={replace This curly brackets and its content with the key form the email}';
 
   const formData = new FormData();
   formData.append('document', inpFile.files[0]);
