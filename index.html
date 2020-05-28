@@ -8,15 +8,33 @@
     <title>Fetch Klipa</title>
   </head>
   <body>
+    <h1>Klippa Api</h1>
     <div class="main-container">
-      <div class="upload-data">
-        <input type="file" name="" id="" class="input-file" />
-        <span class="send-button">Send to Server</span>
-      </div>
+      <form class="upload-data" id="myForm">
+        <input type="file" name="" id="inpFile" class="input-file" />
+        <button type="submit" class="send-button">Send to Server</button>
+      </form>
       <div class="show-data">
         <span>No data to show</span>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script>
+      const myForm = document.getElementById('myForm');
+      const inpFile = document.getElementById('inpFile');
+      myForm.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const endPoint = 'https://api.ocr.space/parse/image';
+
+        const formData = new FormData();
+        formData.append('inpFile', inpFile.files[0]);
+        var myHeaders = new Headers();
+        myHeaders.append('apikey', 'd0bef30f5388957');
+        fetch(endPoint, { method: 'post', body: formData, headers: myHeaders })
+          .then((response) => response.json())
+          .then((result) => console.log(result))
+          .catch((error) => console.log('error', error));
+      });
+    </script>
+    <!-- <script src="main.js"></script> -->
   </body>
 </html>
