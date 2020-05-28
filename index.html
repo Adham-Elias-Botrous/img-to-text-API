@@ -11,11 +11,21 @@
     <h1>Invoice to Text API</h1>
     <div class="main-container">
       <form class="upload-data" id="myForm">
-        <input type="file" name="" id="inpFile" class="input-file" />
+        <input
+          type="file"
+          name=""
+          id="inpFile"
+          class="input-file"
+          accept="image/png, image/jpeg, image/gif"
+        />
         <button type="submit" class="send-button">Send to Server</button>
       </form>
       <div class="show-data" id="showData">
-        <span>No data to show</span>
+        <p>
+          Welcome, choose a picture file then click the button,and the invoc's
+          picture will be converted to text.
+        </p>
+        <p class="tip">Supported iamge's formats: jpg, png, gif</p>
       </div>
     </div>
 
