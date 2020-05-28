@@ -7,6 +7,9 @@ body {
 input {
   border-radius: 10px;
 }
+h1 {
+  text-align: center;
+}
 .main-container {
   width: 800px;
   background-color: #f6f6f6;
@@ -47,15 +50,15 @@ input {
   background-color: #e0e0e0;
 }
 
-.main-container .show-data .repo-box {
+.main-container .show-data .line-box {
   background-color: #fff;
   padding: 15px;
 }
-.main-container .show-data .repo-box:not(:last-child) {
+.main-container .show-data .line-box:not(:last-child) {
   margin-bottom: 5px;
 }
-.repo-box a,
-.repo-box span {
+.line-box a,
+.line-box span {
   float: right;
   margin-left: 4px;
   border-radius: 4px;
@@ -65,11 +68,11 @@ input {
   text-align: center;
   padding: 4px;
 }
-.repo-box a {
+.line-box a {
   text-decoration: none;
   background-color: #e91e63;
 }
-.repo-box span {
+.line-box span {
   background-color: #009688;
 }
 
