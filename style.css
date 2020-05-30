@@ -71,6 +71,24 @@ h1 {
   width: 100%;
   font-weight: lighter;
 }
+
+.progressContainer {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.progressBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4caf50;
+  text-align: center;
+  color: #ddd;
+}
+.loaderTitle {
+  width: 100%;
+  text-align: center;
+  color: #4caf50;
+}
 .loader {
   border: 16px solid #eeeeee; /* Light grey */
   border-top: 16px solid #5bb769; /* Blue */
