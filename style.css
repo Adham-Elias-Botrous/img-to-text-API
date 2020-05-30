@@ -44,6 +44,10 @@ h1 {
   cursor: pointer;
   border: 0px;
   border-radius: 4px;
+  outline: none;
+}
+.send-button:focus {
+  outline: none;
 }
 
 .main-container .show-data {
@@ -137,6 +141,7 @@ h1 {
     border: 0px;
     border-radius: 4px;
   }
+
   .upload-data input {
     width: 100%;
     padding: 5px;
