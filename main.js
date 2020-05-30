@@ -1,6 +1,7 @@
 const myForm = document.getElementById('myForm');
 const inpFile = document.getElementById('inpFile');
 const showData = document.getElementById('showData');
+console.log(axios);
 let loader;
 
 myForm.addEventListener('submit', (ev) => {
@@ -11,24 +12,34 @@ myForm.addEventListener('submit', (ev) => {
   }
   showData.innerHTML = '<div class="loader"></div>';
   const endPoint =
-    'https://custom-ocr.klippa.com/api/v1/parseDocument?X-Auth-Key={replace This curly brackets and its content with the key form the email}';
+    'https://custom-ocr.klippa.com/api/v1/parseDocument?X-Auth-Key=sLiopG4bfDH6wcIZxBjZk85Z9DIiUK7G';
 
   const formData = new FormData();
   formData.append('document', inpFile.files[0]);
-  const myHeaders = new Headers();
-  loader = 1;
-  fetch(endPoint, { method: 'post', body: formData, headers: myHeaders })
-    .then((response) => {
-      if (!response.ok)
-        throw Error(`Request rejected with status ${response.status}`);
-      return response.json();
-    })
+
+  axios
+    .post(
+      endPoint,
+      formData,
+
+      {
+        validateStatus: function (status) {
+          return status >= 200 && status < 300;
+        },
+        onUploadProgress: function (progressEvent) {
+          console.log(
+            `Upload Progress: ${Math.round(
+              (progressEvent.loaded / progressEvent.total) * 100
+            )}%`
+          );
+        },
+      }
+    )
     .then((result) => {
-      loader = 0;
       showData.innerHTML = '';
       const lineBox = document.createElement('div');
       lineBox.classList.add('line-box');
-      lineBox.innerText = result.data.raw_text;
+      lineBox.innerText = result.data.data.raw_text;
       showData.appendChild(lineBox);
       inpFile.value = '';
     })
